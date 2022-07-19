@@ -5,8 +5,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
-{
+return new class extends Migration {
     /**
      * Run the migrations.
      *
@@ -18,6 +17,8 @@ return new class extends Migration
             $table->id();
             $table->foreignIdFor(User::class);
             $table->string('title');
+            $table->timestamp('published_at')->nullable();
+            $table->string('og-image')->nullable();
             $table->longText('body');
             $table->timestamps();
         });

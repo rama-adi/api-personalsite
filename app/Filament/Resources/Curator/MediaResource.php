@@ -27,6 +27,8 @@ class MediaResource extends Resource
 {
     protected static ?string $model = Media::class;
 
+    protected static ?string $navigationGroup = "Content";
+
     protected static ?string $navigationIcon = 'heroicon-o-photograph';
 
     public static function form(Form $form): Form
@@ -44,6 +46,7 @@ class MediaResource extends Resource
                                     ->preserveFilenames(config('filament-curator.preserve_file_names'))
                                     ->disableLabel()
                                     ->maxWidth(5000)
+                                    ->visibility('private')
                                     ->acceptedFileTypes(config('filament-curator.accepted_file_types'))
                                     ->directory(config('filament-curator.directory', 'images'))
                                     ->disk(config('filament-curator.disk', 'public'))
