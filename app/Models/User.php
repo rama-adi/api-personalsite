@@ -44,12 +44,15 @@ class User extends Authenticatable implements FilamentUser
         'email_verified_at' => 'datetime',
     ];
 
-    public function posts() : HasMany {
+    public function posts(): HasMany
+    {
         return $this->hasMany(Post::class);
     }
 
     public function canAccessFilament(): bool
     {
-        return $this->is_admin;
+        return config('app.env', 'production') === 'local'
+            ? true
+            : $this->is_admin;
     }
 }
