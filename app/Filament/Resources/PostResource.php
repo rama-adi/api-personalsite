@@ -11,10 +11,8 @@ use Filament\Resources\Form;
 use Filament\Resources\Resource;
 use Filament\Resources\Table;
 use Filament\Tables;
-use FilamentCurator\Forms\Components\MediaPicker;
 use FilamentTiptapEditor\TiptapEditor;
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Illuminate\Support\Facades\Storage;
 use Livewire\TemporaryUploadedFile;
 
@@ -36,6 +34,7 @@ class PostResource extends Resource
                     ->schema([
                         Forms\Components\TextInput::make('title')
                             ->required()
+                            ->disableAutocomplete()
                             ->maxLength(255),
                         TiptapEditor::make('body')
                             ->required(),
@@ -48,8 +47,13 @@ class PostResource extends Resource
                             ->label('Author')
                             ->required()
                             ->relationship('user', 'name'),
+                        Forms\Components\TextInput::make('og_title')
+                            ->label('Opengraph title')
+                            ->disableAutocomplete()
+                            ->helperText('Put "br" tag to add new line on opengraph image'),
                         Forms\Components\DateTimePicker::make('published_at')
-                            ->label('Published_at'),
+                            ->label('Published at')
+                            ->helperText('Leave empty to set as draft'),
                         Forms\Components\SpatieTagsInput::make('tags')
                             ->type('post-tags'),
                     ]),

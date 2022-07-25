@@ -22,6 +22,6 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
-Route::get('og-image/post/{post}', [OpengraphImageController::class, 'post']);
+Route::get('og-image/post/{post}', [OpengraphImageController::class, 'post'])->name('og-image.post');
 
 require __DIR__.'/auth.php';

@@ -31,4 +31,8 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
 
+    'puppeteer' => [
+        'screenshot_api_url' => env('SCREENSHOT_API_URL'),
+        'secret_key' => env('SCREENSHOT_SECRET_KEY')
+    ],
 ];
