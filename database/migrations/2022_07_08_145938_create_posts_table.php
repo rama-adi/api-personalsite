@@ -17,9 +17,9 @@ return new class extends Migration {
             $table->id();
             $table->foreignIdFor(User::class);
             $table->string('title');
-            $table->string('og-title')->nullable();
+            $table->string('og_title')->nullable();
             $table->timestamp('published_at')->nullable();
-            $table->string('og-image')->nullable();
+            $table->string('og_image')->nullable();
             $table->longText('body');
             $table->timestamps();
         });
