@@ -1,6 +1,5 @@
 <?php
 
-use App\Models\User;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -13,15 +12,13 @@ return new class extends Migration {
      */
     public function up()
     {
-        Schema::create('posts', function (Blueprint $table) {
+        Schema::create('job_logs', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(User::class);
             $table->string('title');
-            $table->string('header_image');
-            $table->string('og_title')->nullable();
-            $table->timestamp('published_at')->nullable();
-            $table->string('og_image')->nullable();
-            $table->longText('body');
+            $table->string('status');
+            $table->string('job_class');
+            $table->longText('log')->nullable();
+            $table->dateTime('finished_at')->nullable();
             $table->timestamps();
         });
     }
@@ -33,6 +30,6 @@ return new class extends Migration {
      */
     public function down()
     {
-        Schema::dropIfExists('posts');
+        Schema::dropIfExists('job_logs');
     }
 };

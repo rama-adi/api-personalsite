@@ -2,7 +2,7 @@
 
 return [
     'model' => \FilamentCurator\Models\Media::class,
-    'disk' => 'r2',
+    'disk' => env('FILESYSTEM_DISK', 'local'),
     'visibility' => 'private',
     'directory' => 'site-media',
     'preserve_file_names' => false,
